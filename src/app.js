@@ -4,7 +4,14 @@ import cors from 'cors';
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      callback(null, origin); // Reflects the request origin, allowing all origins
+    },
+    credentials: true, // Allow credentials (cookies, etc.)
+  })
+);
 console.log('Here is origin: ', process.env.FRONTEND_DOMAIN);
 
 app.use(express.json({ limit: '50mb' }));
