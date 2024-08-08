@@ -4,14 +4,7 @@ import cors from 'cors';
 
 const app = express();
 
-app.use(
-  cors({
-    origin: process.env.FRONTEND_DOMAIN,
-    credentials: true,
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    allowedHeaders: 'Authorization,Content-Type',
-  })
-);
+app.use(cors());
 console.log('Here is origin: ', process.env.FRONTEND_DOMAIN);
 
 app.use(express.json({ limit: '50mb' }));
